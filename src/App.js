@@ -1,6 +1,7 @@
 import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 export default function App() {
     //States
@@ -48,6 +49,11 @@ export default function App() {
         })
     }
 
+    function newGame() {
+        setDice(allNewDice())
+        setWin(prev => !prev)
+    }
+
     // Array of Elements
     let diceElements = dice.map(die => {
         return <Die
@@ -59,14 +65,16 @@ export default function App() {
         />
     })
 
-
-
     return (
         <main>
+            {win && <Confetti />}
+            {win && <h2>You won with a set of {dice[0].value}'s!</h2>}
+            {!win && <p>Roll until all dice are the same.
+                Click each die to hold it at its current value between rolls.</p>}
             <div className="die--container">
                 {diceElements}
             </div>
-            <button className="reroll--button" onClick={reroll}>Reroll</button>
+            <button className="reroll--button" onClick={win ? newGame : reroll}>{win ? "New Game" : "Reroll"}</button>
         </main>
     )
 }

@@ -9,6 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 
 main {
@@ -71,4 +72,9 @@ main {
 
 .reroll--button:active {
   box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
 }
