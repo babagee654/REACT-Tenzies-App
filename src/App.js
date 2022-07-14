@@ -41,7 +41,7 @@ export default function App() {
     function allNewDice() {
         let randomNums = []
         for (let i = 0; i < 10; i++) {
-            let value = Math.floor((Math.random() * 2) + 1);
+            let value = Math.floor((Math.random() * 6) + 1);
             randomNums.push({ value: value, isHeld: false, id: nanoid() })
         }
         return randomNums
@@ -51,7 +51,7 @@ export default function App() {
         setDice(oldDice => {
             // if isHeld is true, keep it, else reroll it.
             return oldDice.map(dice => {
-                let reroll = Math.floor((Math.random() * 2) + 1);
+                let reroll = Math.floor((Math.random() * 6) + 1);
                 return dice.isHeld ? dice : { ...dice, value: reroll }
             })
         })
