@@ -76,6 +76,13 @@ h2, h4{
   padding: 0;
 }
 
+.counters--container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+
 /* Sided Dice */
 
 .face {

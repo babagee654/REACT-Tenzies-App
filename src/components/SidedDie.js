@@ -21,7 +21,7 @@ export default function SidedDie(props) {
             {(props.value === 2 || props.value >= 4) && <div className="dot top left"></div>}
             {props.value === 6 && <div className="dot top center"></div>}
             {props.value >= 3 && <div className="dot top right"></div>}
-            {(props.value === 1 || props.value == 3 || props.value === 5) && <div className="dot mid center"></div>}
+            {(props.value === 1 || props.value === 3 || props.value === 5) && <div className="dot mid center"></div>}
             {props.value >= 3 && <div className="dot bot left"></div>}
             {props.value === 6 && <div className="dot bot center"></div>}
             {(props.value === 2 || props.value >= 4) && <div className="dot bot right"></div>}
