@@ -2,11 +2,13 @@ import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import SidedDie from "./components/SidedDie";
 
 export default function App() {
     //States
     const [win, setWin] = React.useState(false)
     const [dice, setDice] = React.useState(allNewDice())
+    const [rollCounter, setRollCounter] = React.useState(0)
 
     // useEffects
     React.useEffect(() => {
@@ -37,6 +39,7 @@ export default function App() {
                 return dice.isHeld ? dice : { ...dice, value: reroll }
             })
         })
+        setRollCounter(prev => prev + 1)
     }
 
     function toggleHold(id) {
@@ -52,11 +55,12 @@ export default function App() {
     function newGame() {
         setDice(allNewDice())
         setWin(prev => !prev)
+        setRollCounter(0)
     }
 
     // Array of Elements
     let diceElements = dice.map(die => {
-        return <Die
+        return <SidedDie
             value={die.value}
             isHeld={die.isHeld}
             key={die.id}
@@ -68,9 +72,10 @@ export default function App() {
     return (
         <main>
             {win && <Confetti />}
-            {win && <h2>You won with a set of {dice[0].value}'s!</h2>}
-            {!win && <p>Roll until all dice are the same.
-                Click each die to hold it at its current value between rolls.</p>}
+            {win && <h2>You won with a set of {dice[0].value}'s after {rollCounter} rolls!</h2>}
+            {!win && <h4>Roll until all dice are the same.
+                Click each die to hold it at its current value between rolls.</h4>}
+            {!win && <h4>Rolls: {rollCounter}</h4>}
             <div className="die--container">
                 {diceElements}
             </div>

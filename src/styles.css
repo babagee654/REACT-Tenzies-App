@@ -52,10 +52,7 @@ main {
   font-size: 2rem;
 }
 
-.held {
-  background-color: rgb(17, 122, 87);
-  color: rgb(255, 255, 255);
-}
+
 
 .reroll--button {
   width: 5rem;
@@ -74,7 +71,84 @@ main {
   box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
 }
 
-h2 {
+h2, h4{
   margin: 0;
   padding: 0;
+}
+
+/* Sided Dice */
+
+.face {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 247, 236);
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.15);
+  display: grid;
+  /* repeat(3, 1fr) === 1fr 1fr 1fr */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  cursor: pointer;
+}
+
+.face:active {
+  box-shadow: inset 0px 0px 5px 2px rgba(83, 180, 127, 0.25);
+}
+
+.held {
+  box-shadow: 0px 0px 10px #298c43;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  background-color: #000000;
+  box-shadow: inset 1px 1px #959595;
+  justify-self: center;
+  align-self: center;
+  /* can also use
+    place-self: center
+  */
+}
+
+.tiny--face {
+  width: 1rem;
+  height: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 247, 236);
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.15);
+  display: grid;
+  /* repeat(3, 1fr) === 1fr 1fr 1fr */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+.tiny--dot {
+  width: 0.15rem;
+  height: 0.15rem;
+  border-radius: 100%;
+  background-color: #000000;
+  box-shadow: inset 1px 1px #959595;
+  place-self: center;
+}
+
+.top {
+  grid-row-start: 1;
+}
+.mid {
+  grid-row-start: 2;
+}
+.bot {
+  grid-row-start: 3;
+}
+.left {
+  grid-column-start: 1;
+}
+.center {
+  grid-column-start: 2;
+}
+.right {
+  grid-column-start: 3;
 }
